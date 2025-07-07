@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Banknote, Landmark } from "lucide-react";
 
 export default function Donate() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -14,14 +16,10 @@ export default function Donate() {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             entry.target.classList.remove('opacity-0');
-            if(entry.target.classList.contains('animate-float')) {
-                entry.target.classList.add('animate-fade-in-up');
-            }
+            entry.target.classList.add('animate-fade-in-up');
           } else {
             entry.target.classList.add('opacity-0');
-            if(entry.target.classList.contains('animate-float')) {
-                entry.target.classList.remove('animate-fade-in-up');
-            }
+            entry.target.classList.remove('animate-fade-in-up');
           }
         });
       },
@@ -37,35 +35,54 @@ export default function Donate() {
   return (
     <section id="donate" ref={sectionRef} className="bg-secondary">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid gap-12 md:grid-cols-2 md:items-center">
+        <div className="grid gap-12 md:grid-cols-2 md:items-start">
           <div className="space-y-6 opacity-0 scroll-anim">
             <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
-              Make a Difference Today
+              Make a Donation
             </h2>
             <p className="text-lg text-muted-foreground">
-              Your contribution helps us fund education, healthcare, and livelihood programs for those in need. Every rupee you donate goes directly into improving lives and building a more inclusive society.
+              Your generous donation will help us continue our mission and reach out to more people in need. You can donate via Paytm, Gpay, PhonePe or directly through a bank transfer.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button size="lg" asChild>
-                <Link href="https://razorpay.me/@babudeendayalsinghcharitablet" target="_blank" rel="noopener noreferrer">
-                  Donate via Razorpay
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline">Set Up Monthly Giving</Button>
-              <Button size="lg" variant="outline">Sponsor a Child/Patient</Button>
-            </div>
+            
+            <Card className="border-primary/20 shadow-lg">
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2 font-headline text-xl">
+                        <Landmark className="h-6 w-6 text-primary"/>
+                        Donate via Bank Transfer
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3 text-muted-foreground">
+                    <p>If you prefer to donate directly via bank transfer, please use the following bank details:</p>
+                    <ul className="space-y-1 font-mono text-sm bg-background/50 p-4 rounded-md border">
+                        <li><strong>A/c Name:</strong> BABU DEENDAYAL SINGH CHARITABLE TRUST</li>
+                        <li><strong>Bank:</strong> Utkarsh Small Finance Bank</li>
+                        <li><strong>A/c No:</strong> 1513020000000211</li>
+                        <li><strong>IFSC:</strong> UTKS0001513</li>
+                        <li><strong>Branch:</strong> Lanka, Varanasi, U.P. 221005</li>
+                    </ul>
+                </CardContent>
+            </Card>
+
+            <p className="text-lg font-semibold text-muted-foreground pt-4">Thank you for your support!</p>
           </div>
-          <div className="flex justify-center items-center opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
-             <div className="bg-white p-6 rounded-lg shadow-xl border-4 border-primary/50 animate-float">
+          <div className="flex flex-col justify-start items-center gap-8 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
+             <div className="bg-white p-6 rounded-lg shadow-xl border-4 border-primary/50 animate-float w-full max-w-sm">
+               <h3 className="text-center font-headline text-xl font-semibold mb-4 text-foreground">Paytm QR Code</h3>
                <Image 
                  src="https://placehold.co/300x300.png"
                  alt="UPI QR Code for Donations"
                  width={300}
                  height={300}
                  data-ai-hint="qr code"
+                 className="mx-auto"
                />
-               <p className="mt-4 text-center font-semibold text-foreground">Scan to Donate</p>
+               <p className="mt-4 text-center font-semibold text-foreground">Scan with Paytm, GPay, or PhonePe</p>
              </div>
+             <Button size="lg" asChild className="w-full max-w-sm">
+                <Link href="https://razorpay.me/@babudeendayalsinghcharitablet" target="_blank" rel="noopener noreferrer">
+                  <Banknote className="mr-2"/> Donate via Razorpay
+                </Link>
+              </Button>
           </div>
         </div>
       </div>
