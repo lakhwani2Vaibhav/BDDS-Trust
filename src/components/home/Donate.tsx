@@ -53,32 +53,32 @@ export default function Donate() {
                 </CardHeader>
                 <CardContent className="space-y-3 text-muted-foreground">
                     <p>If you prefer to donate directly via bank transfer, please use the following bank details:</p>
-                    <ul className="space-y-2 font-mono text-sm bg-background/50 p-4 rounded-md border">
-                        <li className="flex flex-col sm:flex-row">
-                            <strong className="w-40 shrink-0">Account Name:</strong>
+                    <ul className="space-y-3 font-mono text-sm bg-background/50 p-4 rounded-md border">
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2">
+                            <strong className="font-semibold text-foreground/80">Account Name:</strong>
                             <span>BABU DEENDAYAL SINGH CHARITABLE TRUST</span>
                         </li>
-                        <li className="flex flex-col sm:flex-row">
-                            <strong className="w-40 shrink-0">Bank Name:</strong>
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2">
+                            <strong className="font-semibold text-foreground/80">Bank Name:</strong>
                             <span>Utkarsh Small Finance Bank</span>
                         </li>
-                        <li className="flex flex-col sm:flex-row">
-                            <strong className="w-40 shrink-0">Account Number:</strong>
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2">
+                            <strong className="font-semibold text-foreground/80">Account Number:</strong>
                             <span>1513020000000211</span>
                         </li>
-                        <li className="flex flex-col sm:flex-row">
-                            <strong className="w-40 shrink-0">IFSC Code:</strong>
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2">
+                            <strong className="font-semibold text-foreground/80">IFSC Code:</strong>
                             <span>UTKS0001513</span>
                         </li>
-                        <li className="flex flex-col sm:flex-row">
-                            <strong className="w-40 shrink-0">Branch Address:</strong>
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2">
+                            <strong className="font-semibold text-foreground/80">Branch Address:</strong>
                             <span>Lanka, Varanasi, U.P. 221005</span>
                         </li>
                     </ul>
                 </CardContent>
             </Card>
 
-            <p className="text-lg font-semibold text-muted-foreground pt-4">Thank you for your support!</p>
+            <p className="text-lg font-semibold text-muted-foreground pt-4 text-center">Thank you for your support!</p>
           </div>
           <div className="flex flex-col justify-start items-center gap-8 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
              <div className="bg-white p-6 rounded-lg shadow-xl border-4 border-primary/50 animate-float w-full max-w-sm">
