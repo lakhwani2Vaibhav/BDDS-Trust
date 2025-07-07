@@ -1,64 +1,66 @@
 import Image from "next/image";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Stethoscope, BookOpen, Briefcase, GraduationCap } from "lucide-react";
 
 const initiatives = [
   {
     title: "Health",
-    icon: Stethoscope,
-    description: "Our holistic rehab program includes Medical Support, Therapy, Capacity Building, and Awareness Drives for those with disabilities and critical needs.",
-    image: "https://placehold.co/600x400.png",
-    aiHint: "medical camp"
+    program: "Healthcare Programs",
+    description: "We provide access to quality healthcare services, including medical camps, health awareness programs, and support for patients in need. Our initiatives aim to improve health outcomes and ensure well-being for all.",
+    image: "https://placehold.co/500x320.png",
+    aiHint: "doctor patient"
   },
   {
     title: "Education",
-    icon: BookOpen,
-    description: "We believe education builds confidence and helps every child realize their dreams. We offer inclusive learning environments and academic resources.",
-    image: "https://placehold.co/600x400.png",
+    program: "Educational Support",
+    description: "Our education programs focus on providing quality education to underprivileged children. We support schools, provide educational materials, and offer scholarships to deserving students, fostering a brighter future.",
+    image: "https://placehold.co/500x320.png",
     aiHint: "children classroom"
   },
   {
     title: "Livelihood",
-    icon: Briefcase,
-    description: "Empowering youth with disabilities by offering skill development training and supporting small business initiatives for sustainable income.",
-    image: "https://placehold.co/600x400.png",
-    aiHint: "skill training"
+    program: "Livelihood Programs",
+    description: "We empower individuals with skills and resources to improve their livelihoods. Our programs include vocational training, entrepreneurship support, and job placement assistance, enabling economic independence.",
+    image: "https://placehold.co/500x320.png",
+    aiHint: "person writing desk"
   },
   {
     title: "Higher Education",
-    icon: GraduationCap,
-    description: "We help students with disabilities pursue higher education through scholarships, awareness campaigns, and employment-readiness programs.",
-    image: "https://placehold.co/600x400.png",
-    aiHint: "students studying"
+    program: "Higher Education Support",
+    description: "We support students pursuing higher education by providing scholarships and mentorship. Our goal is to help them achieve their academic and career aspirations, contributing to a skilled workforce.",
+    image: "https://placehold.co/500x320.png",
+    aiHint: "student writing books"
   }
 ];
 
 export default function Initiatives() {
   return (
-    <section id="initiatives" className="bg-secondary">
+    <section id="initiatives">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto">
-          <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Our Initiatives</h2>
+          <h2 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Our Initiatives</h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Babu D.D. Singh Charitable Trust is committed to transforming lives through inclusive development. Our work focuses on the following key areas:
+            Babu D.D. Singh Charitable Trust is dedicated to improving lives through focused initiatives in health, education, and livelihood. Our programs are designed to create lasting impact and empower communities.
           </p>
         </div>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {initiatives.map((item) => (
-            <Card key={item.title} className="flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
-              <div className="relative h-48 w-full">
-                <Image src={item.image} alt={item.title} layout="fill" objectFit="cover" data-ai-hint={item.aiHint} />
+
+        <div className="mt-20 space-y-20">
+          {initiatives.map((item, index) => (
+            <div key={item.title} className="grid md:grid-cols-2 gap-16 items-center">
+              <div className="space-y-4">
+                <h3 className="text-3xl font-bold tracking-tight">{item.title}</h3>
+                <h4 className="text-xl font-bold">{item.program}</h4>
+                <p className="text-muted-foreground text-base">{item.description}</p>
               </div>
-              <CardHeader className="flex-row items-center gap-4">
-                <div className="bg-primary/20 p-3 rounded-full">
-                  <item.icon className="h-6 w-6 text-primary" />
-                </div>
-                <CardTitle className="font-headline text-2xl">{item.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription>{item.description}</CardDescription>
-              </CardContent>
-            </Card>
+              <div className="flex items-center justify-center">
+                <Image 
+                  src={item.image} 
+                  alt={item.program} 
+                  width={500} 
+                  height={320} 
+                  className="rounded-lg shadow-md"
+                  data-ai-hint={item.aiHint}
+                />
+              </div>
+            </div>
           ))}
         </div>
       </div>

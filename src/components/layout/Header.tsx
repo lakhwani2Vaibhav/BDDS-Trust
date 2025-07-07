@@ -1,30 +1,22 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, HeartHandshake } from "lucide-react";
+import { Menu, Gem } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { href: "#about", label: "Who We Are" },
+  { href: "#home", label: "Home" },
+  { href: "#about", label: "About Us" },
   { href: "#initiatives", label: "Our Initiatives" },
-  { href: "#gallery", label: "Memories" },
+  { href: "#gallery", label: "Gallery" },
   { href: "#contact", label: "Contact Us" },
 ];
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   const NavLinkItems = ({ isMobile = false }: { isMobile?: boolean }) => (
     <>
@@ -35,7 +27,7 @@ export default function Header() {
           onClick={() => isMobile && setMobileMenuOpen(false)}
           className={cn(
             "transition-colors hover:text-primary",
-            isMobile && "block w-full p-4 text-lg"
+            isMobile ? "block w-full p-4 text-lg" : "text-sm font-medium"
           )}
         >
           {link.label}
@@ -45,48 +37,44 @@ export default function Header() {
   );
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full transition-all duration-300",
-        scrolled ? "bg-background/80 shadow-md backdrop-blur-sm" : "bg-transparent"
-      )}
-    >
+    <header className="bg-background border-b">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2 font-bold text-lg">
-          <HeartHandshake className="h-7 w-7 text-primary" />
-          <span className="font-headline text-xl">B.D.D.S. Trust</span>
+        <Link href="/" className="flex items-center gap-2 font-bold text-lg shrink-0">
+          <Gem className="h-6 w-6 text-primary" />
+          <span className="font-headline text-xl hidden md:inline">Babu D.D. Singh Charitable Trust</span>
+          <span className="font-headline text-lg md:hidden">B.D.D.S. Trust</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
-          <NavLinkItems />
-        </nav>
-
         <div className="flex items-center gap-4">
-          <Button asChild>
-            <Link href="#donate">Donate Now</Link>
-          </Button>
+            <nav className="hidden items-center gap-6 lg:flex">
+              <NavLinkItems />
+            </nav>
 
-          <div className="md:hidden">
-            <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
-              <SheetTrigger asChild>
-                <Button variant="outline" size="icon">
-                  <Menu className="h-6 w-6" />
-                  <span className="sr-only">Open menu</span>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right">
-                <div className="flex flex-col gap-6 p-6">
-                  <Link href="/" className="flex items-center gap-2 font-bold text-lg">
-                     <HeartHandshake className="h-7 w-7 text-primary" />
-                     <span className="font-headline text-xl">B.D.D.S. Trust</span>
-                  </Link>
-                  <nav className="flex flex-col gap-2">
-                    <NavLinkItems isMobile />
-                  </nav>
-                </div>
-              </SheetContent>
-            </Sheet>
-          </div>
+            <Button asChild>
+                <Link href="#donate">Donate Now</Link>
+            </Button>
+            
+            <div className="lg:hidden">
+                <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+                <SheetTrigger asChild>
+                    <Button variant="outline" size="icon">
+                    <Menu className="h-6 w-6" />
+                    <span className="sr-only">Open menu</span>
+                    </Button>
+                </SheetTrigger>
+                <SheetContent side="right">
+                    <div className="flex flex-col gap-6 p-6">
+                    <Link href="/" className="flex items-center gap-2 font-bold text-lg" onClick={() => setMobileMenuOpen(false)}>
+                        <Gem className="h-7 w-7 text-primary" />
+                        <span className="font-headline text-xl">B.D.D.S. Trust</span>
+                    </Link>
+                    <nav className="flex flex-col gap-2">
+                        <NavLinkItems isMobile />
+                    </nav>
+                    </div>
+                </SheetContent>
+                </Sheet>
+            </div>
         </div>
       </div>
     </header>
