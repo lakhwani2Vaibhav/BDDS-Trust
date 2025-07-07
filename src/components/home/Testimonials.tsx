@@ -82,23 +82,23 @@ export default function Testimonials() {
             <div className="grid md:grid-cols-12 gap-8 items-center">
                 <div className="md:col-span-4 text-center md:text-left opacity-0 scroll-anim">
                     <p className="text-muted-foreground font-medium">Testimonials</p>
-                    <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl mt-2">
-                        What People Says About Us
+                    <h2 className="font-headline text-2xl font-bold tracking-tight sm:text-3xl mt-2">
+                        What People Say About Us
                     </h2>
                     <div className="mt-6 justify-center md:justify-start flex gap-2">
-                        <CarouselPrevious className="relative -left-0 top-0 -translate-y-0 hidden sm:flex" />
-                        <CarouselNext className="relative -left-0 top-0 -translate-y-0 hidden sm:flex" />
+                        <CarouselPrevious className="relative -left-0 top-0 -translate-y-0" />
+                        <CarouselNext className="relative -left-0 top-0 -translate-y-0" />
                     </div>
                 </div>
                 <div className="md:col-span-8 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
                     <CarouselContent className="-ml-4">
                         {testimonials.map((testimonial, index) => (
-                        <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/2">
+                        <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2">
                             <div className="p-1 h-full">
                                 <Card className="h-full bg-background shadow-lg border border-border/20">
                                     <CardContent className="p-6 flex flex-col justify-between h-full">
                                         <div>
-                                            <Quote className="w-10 h-10 text-primary" fill="hsl(var(--primary))" strokeWidth={0} />
+                                            <Quote className="w-8 h-8 sm:w-10 sm:h-10 text-primary" fill="hsl(var(--primary))" strokeWidth={0} />
                                             <p className="mt-4 text-muted-foreground italic">
                                                 "{testimonial.quote}"
                                             </p>
