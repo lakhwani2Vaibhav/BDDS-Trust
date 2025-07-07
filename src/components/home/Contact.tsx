@@ -1,4 +1,7 @@
+'use client';
+
 import { MapPin, Phone, Mail } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const contactInfo = [
     {
@@ -30,9 +33,33 @@ const contactInfo = [
 ];
 
 export default function Contact() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0');
+            entry.target.classList.add('animate-fade-in-up');
+          } else {
+            entry.target.classList.add('opacity-0');
+            entry.target.classList.remove('animate-fade-in-up');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = Array.from(sectionRef.current?.querySelectorAll('.scroll-anim') || []);
+    elements.forEach((el) => observer.observe(el));
+
+    return () => elements.forEach((el) => observer.unobserve(el));
+  }, []);
+
   return (
-    <section id="contact" className="container mx-auto px-4 md:px-6">
-      <div className="text-center opacity-0 animate-fade-in-up">
+    <section id="contact" ref={sectionRef} className="container mx-auto px-4 md:px-6">
+      <div className="text-center opacity-0 scroll-anim">
         <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
           Get in Touch
         </h2>
@@ -42,7 +69,7 @@ export default function Contact() {
       </div>
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {contactInfo.map((item, index) => (
-          <div key={index} className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-md border opacity-0 animate-fade-in-up transition-transform duration-300 hover:-translate-y-2" style={{ animationDelay: `${0.2 + index * 0.15}s` }}>
+          <div key={index} className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-md border opacity-0 scroll-anim transition-transform duration-300 hover:-translate-y-2" style={{ animationDelay: `${0.2 + index * 0.15}s` }}>
             <div className="bg-primary/20 p-4 rounded-full mb-4">
                <item.icon className="h-8 w-8 text-primary" />
             </div>

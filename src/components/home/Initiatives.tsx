@@ -1,4 +1,7 @@
+'use client';
+
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
 const initiatives = [
   {
@@ -32,10 +35,34 @@ const initiatives = [
 ];
 
 export default function Initiatives() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove('opacity-0');
+            entry.target.classList.add('animate-fade-in-up');
+          } else {
+            entry.target.classList.add('opacity-0');
+            entry.target.classList.remove('animate-fade-in-up');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = Array.from(sectionRef.current?.querySelectorAll('.scroll-anim') || []);
+    elements.forEach((el) => observer.observe(el));
+
+    return () => elements.forEach((el) => observer.unobserve(el));
+  }, []);
+
   return (
-    <section id="initiatives">
+    <section id="initiatives" ref={sectionRef}>
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto opacity-0 animate-fade-in-up">
+        <div className="text-center max-w-3xl mx-auto opacity-0 scroll-anim">
           <h2 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Our Initiatives</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Babu D.D. Singh Charitable Trust is dedicated to improving lives through focused initiatives in health, education, and livelihood. Our programs are designed to create lasting impact and empower communities.
@@ -44,7 +71,7 @@ export default function Initiatives() {
 
         <div className="mt-20 space-y-20">
           {initiatives.map((item, index) => (
-            <div key={item.title} className="grid md:grid-cols-2 gap-16 items-center opacity-0 animate-fade-in-up" style={{ animationDelay: `${0.2 + index * 0.2}s` }}>
+            <div key={item.title} className="grid md:grid-cols-2 gap-16 items-center opacity-0 scroll-anim" style={{ animationDelay: `${0.2 + index * 0.2}s` }}>
               <div className="space-y-4">
                 <h3 className="text-3xl font-bold tracking-tight">{item.title}</h3>
                 <h4 className="text-xl font-bold">{item.program}</h4>

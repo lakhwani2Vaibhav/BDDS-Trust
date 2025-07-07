@@ -1,10 +1,37 @@
+'use client';
+
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { useEffect, useRef } from "react";
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("opacity-0");
+            entry.target.classList.add("animate-fade-in-up");
+          } else {
+            entry.target.classList.add("opacity-0");
+            entry.target.classList.remove("animate-fade-in-up");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = Array.from(sectionRef.current?.querySelectorAll(".scroll-anim") || []);
+    elements.forEach((el) => observer.observe(el));
+
+    return () => elements.forEach((el) => observer.unobserve(el));
+  }, []);
+
   return (
-    <section id="home" className="relative h-[80vh] min-h-[600px] w-full flex items-center justify-center text-white">
+    <section ref={sectionRef} id="home" className="relative h-[80vh] min-h-[600px] w-full flex items-center justify-center text-white">
       <Image
         src="https://placehold.co/1920x1080.png"
         alt="Community outreach by the trust"
@@ -15,13 +42,13 @@ export default function Hero() {
         priority
       />
       <div className="relative z-10 container mx-auto text-center px-4">
-        <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold !leading-tight tracking-tight opacity-0 animate-fade-in-up">
+        <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl font-bold !leading-tight tracking-tight opacity-0 scroll-anim">
           Serving Humanity with <br /> Compassion & Purpose
         </h1>
-        <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-slate-200 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+        <p className="mt-4 max-w-2xl mx-auto text-lg md:text-xl text-slate-200 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
           Babu D.D. Singh Charitable Trust is dedicated to empowering lives through health, education, and livelihood initiatives for underprivileged and disabled communities across Uttar Pradesh.
         </p>
-        <div className="mt-8 flex flex-wrap justify-center gap-4 opacity-0 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+        <div className="mt-8 flex flex-wrap justify-center gap-4 opacity-0 scroll-anim" style={{ animationDelay: '0.4s' }}>
           <Button size="lg" asChild>
             <Link href="#donate">Donate Now</Link>
           </Button>
