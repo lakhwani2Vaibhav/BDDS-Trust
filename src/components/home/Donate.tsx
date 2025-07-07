@@ -54,23 +54,23 @@ export default function Donate() {
                 <CardContent className="space-y-3 text-muted-foreground">
                     <p>If you prefer to donate directly via bank transfer, please use the following bank details:</p>
                     <ul className="space-y-3 font-mono text-sm bg-background/50 p-4 rounded-md border">
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2">
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
                             <strong className="font-semibold text-foreground/80">Account Name:</strong>
                             <span>BABU DEENDAYAL SINGH CHARITABLE TRUST</span>
                         </li>
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2">
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
                             <strong className="font-semibold text-foreground/80">Bank Name:</strong>
                             <span>Utkarsh Small Finance Bank</span>
                         </li>
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2">
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
                             <strong className="font-semibold text-foreground/80">Account Number:</strong>
                             <span>1513020000000211</span>
                         </li>
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2">
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
                             <strong className="font-semibold text-foreground/80">IFSC Code:</strong>
                             <span>UTKS0001513</span>
                         </li>
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2">
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
                             <strong className="font-semibold text-foreground/80">Branch Address:</strong>
                             <span>Lanka, Varanasi, U.P. 221005</span>
                         </li>

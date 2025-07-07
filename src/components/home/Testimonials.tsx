@@ -86,14 +86,14 @@ export default function Testimonials() {
                         What People Says About Us
                     </h2>
                     <div className="mt-6 justify-center md:justify-start flex gap-2">
-                        <CarouselPrevious className="relative -left-0 top-0 -translate-y-0" />
-                        <CarouselNext className="relative -left-0 top-0 -translate-y-0" />
+                        <CarouselPrevious className="relative -left-0 top-0 -translate-y-0 hidden sm:flex" />
+                        <CarouselNext className="relative -left-0 top-0 -translate-y-0 hidden sm:flex" />
                     </div>
                 </div>
                 <div className="md:col-span-8 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
                     <CarouselContent className="-ml-4">
                         {testimonials.map((testimonial, index) => (
-                        <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2">
+                        <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/2">
                             <div className="p-1 h-full">
                                 <Card className="h-full bg-background shadow-lg border border-border/20">
                                     <CardContent className="p-6 flex flex-col justify-between h-full">

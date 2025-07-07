@@ -64,7 +64,7 @@ export default function About() {
         </h2>
       </div>
 
-      <div className="mt-12 grid gap-12 md:grid-cols-5 md:gap-16">
+      <div className="mt-12 grid gap-8 md:gap-16 md:grid-cols-5">
         <div className="space-y-4 md:col-span-3 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
           <p className="text-lg text-muted-foreground">
             Babu D.D. Singh Charitable Trust is dedicated to enabling differently abled and marginalized children and youth to receive comprehensive rehabilitation, education, and vocational training. Our mission is to empower these individuals so they can take care of their social, physical, and spiritual needs, and become fully integrated into society.
@@ -86,7 +86,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="mt-20 opacity-0 scroll-anim" style={{ animationDelay: '0.6s' }}>
+      <div className="mt-16 sm:mt-20 opacity-0 scroll-anim" style={{ animationDelay: '0.6s' }}>
         <h3 className="font-headline text-center text-2xl font-bold sm:text-3xl relative pb-4">
             Meet Our Trustees
             <span className="absolute bottom-0 left-1/2 -translate-x-1/2">
@@ -97,7 +97,7 @@ export default function About() {
         </h3>
         <Carousel
             plugins={[plugin.current]}
-            className="w-full max-w-6xl mx-auto mt-8"
+            className="w-full max-w-6xl mx-auto mt-8 sm:mt-12"
             opts={{
                 loop: true,
                 align: "start",

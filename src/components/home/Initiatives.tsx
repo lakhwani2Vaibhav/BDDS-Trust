@@ -63,17 +63,17 @@ export default function Initiatives() {
     <section id="initiatives" ref={sectionRef}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center max-w-3xl mx-auto opacity-0 scroll-anim">
-          <h2 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Our Initiatives</h2>
+          <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">Our Initiatives</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Babu D.D. Singh Charitable Trust is dedicated to improving lives through focused initiatives in health, education, and livelihood. Our programs are designed to create lasting impact and empower communities.
           </p>
         </div>
 
-        <div className="mt-20 space-y-20">
+        <div className="mt-12 sm:mt-20 space-y-12 md:space-y-20">
           {initiatives.map((item, index) => (
-            <div key={item.title} className="grid md:grid-cols-2 gap-16 items-center opacity-0 scroll-anim" style={{ animationDelay: `${0.2 + index * 0.2}s` }}>
-              <div className="space-y-4">
-                <h3 className="text-3xl font-bold tracking-tight">{item.title}</h3>
+            <div key={item.title} className="grid md:grid-cols-2 gap-8 md:gap-16 items-center opacity-0 scroll-anim" style={{ animationDelay: `${0.2 + index * 0.2}s` }}>
+              <div className={`space-y-4 ${index % 2 !== 0 ? 'md:order-last' : ''}`}>
+                <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">{item.title}</h3>
                 <h4 className="text-xl font-bold">{item.program}</h4>
                 <p className="text-muted-foreground text-base">{item.description}</p>
               </div>

@@ -63,8 +63,8 @@ export default function Header() {
                     </Button>
                 </SheetTrigger>
                 <SheetContent side="right">
-                    <div className="flex flex-col gap-6 p-6">
-                    <Link href="/" className="flex items-center gap-2 font-bold text-lg" onClick={() => setMobileMenuOpen(false)}>
+                    <div className="flex flex-col gap-6 pt-6">
+                    <Link href="/" className="flex items-center gap-2 font-bold text-lg px-6" onClick={() => setMobileMenuOpen(false)}>
                         <Gem className="h-7 w-7 text-primary" />
                         <span className="font-headline text-xl">B.D.D.S. Trust</span>
                     </Link>
