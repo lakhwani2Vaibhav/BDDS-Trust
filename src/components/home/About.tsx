@@ -31,7 +31,7 @@ const focusAreas = [
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
   const plugin = useRef(
-    Autoplay({ delay: 1500, stopOnInteraction: true, stopOnMouseEnter: true })
+    Autoplay({ delay: 1500, stopOnInteraction: false, stopOnMouseEnter: false })
   );
 
   useEffect(() => {
@@ -98,21 +98,20 @@ export default function About() {
         <Carousel
             plugins={[plugin.current]}
             className="w-full max-w-6xl mx-auto mt-8"
-            onMouseEnter={plugin.current.stop}
-            onMouseLeave={plugin.current.reset}
             opts={{
                 loop: true,
+                align: "start",
             }}
         >
             <CarouselContent className="-ml-4">
                 {trustees.map((trustee) => (
-                <CarouselItem key={trustee.name} className="pl-4 md:basis-1/2 lg:basis-1/4">
+                <CarouselItem key={trustee.name} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3 lg:basis-1/4">
                     <div className="p-1 h-full">
-                        <div className="rounded-2xl border border-border/20 bg-card p-4 h-full flex flex-col items-center text-center shadow-lg transition-transform duration-300 hover:-translate-y-2">
+                        <div className="group rounded-2xl border border-border/20 bg-card p-4 h-full flex flex-col items-center text-center shadow-lg transition-transform duration-300 hover:-translate-y-2">
                             <div className="relative mb-4 w-36 h-36">
                                 <div className="relative w-full h-full rounded-2xl border-2 border-primary overflow-hidden shadow-inner bg-secondary">
                                     <Avatar className="h-full w-full rounded-none">
-                                        <AvatarImage data-ai-hint="person portrait" src={`https://placehold.co/144x144.png`} alt={trustee.name} />
+                                        <AvatarImage data-ai-hint="person portrait" src={`https://placehold.co/144x144.png`} alt={trustee.name} className="transition-transform duration-300 group-hover:scale-110" />
                                         <AvatarFallback>{trustee.name.charAt(0)}</AvatarFallback>
                                     </Avatar>
                                 </div>
