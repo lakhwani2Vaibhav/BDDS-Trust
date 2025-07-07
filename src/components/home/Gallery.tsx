@@ -13,7 +13,7 @@ const galleryItems = [
 export default function Gallery() {
   return (
     <section id="gallery" className="container mx-auto px-4 md:px-6">
-      <div className="text-center">
+      <div className="text-center opacity-0 animate-fade-in-up">
         <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
           Moments That Matter
         </h2>
@@ -23,7 +23,7 @@ export default function Gallery() {
       </div>
       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 auto-rows-[250px] gap-4">
         {galleryItems.map((item, index) => (
-          <div key={index} className={cn("overflow-hidden rounded-lg shadow-md group", item.span)}>
+          <div key={index} className={cn("overflow-hidden rounded-lg shadow-md group opacity-0 animate-fade-in-up", item.span)} style={{ animationDelay: `${0.2 + index * 0.1}s` }}>
             <div className="relative w-full h-full">
                <Image
                 src={item.src}

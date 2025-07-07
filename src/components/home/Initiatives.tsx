@@ -35,7 +35,7 @@ export default function Initiatives() {
   return (
     <section id="initiatives">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center max-w-3xl mx-auto">
+        <div className="text-center max-w-3xl mx-auto opacity-0 animate-fade-in-up">
           <h2 className="font-headline text-4xl font-bold tracking-tight sm:text-5xl">Our Initiatives</h2>
           <p className="mt-4 text-lg text-muted-foreground">
             Babu D.D. Singh Charitable Trust is dedicated to improving lives through focused initiatives in health, education, and livelihood. Our programs are designed to create lasting impact and empower communities.
@@ -44,7 +44,7 @@ export default function Initiatives() {
 
         <div className="mt-20 space-y-20">
           {initiatives.map((item, index) => (
-            <div key={item.title} className="grid md:grid-cols-2 gap-16 items-center">
+            <div key={item.title} className="grid md:grid-cols-2 gap-16 items-center opacity-0 animate-fade-in-up" style={{ animationDelay: `${0.2 + index * 0.2}s` }}>
               <div className="space-y-4">
                 <h3 className="text-3xl font-bold tracking-tight">{item.title}</h3>
                 <h4 className="text-xl font-bold">{item.program}</h4>

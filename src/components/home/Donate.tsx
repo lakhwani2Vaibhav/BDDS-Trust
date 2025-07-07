@@ -6,7 +6,7 @@ export default function Donate() {
     <section id="donate" className="bg-secondary">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid gap-12 md:grid-cols-2 md:items-center">
-          <div className="space-y-6">
+          <div className="space-y-6 opacity-0 animate-fade-in-up">
             <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
               Make a Difference Today
             </h2>
@@ -19,8 +19,8 @@ export default function Donate() {
               <Button size="lg" variant="outline">Sponsor a Child/Patient</Button>
             </div>
           </div>
-          <div className="flex justify-center items-center">
-             <div className="bg-white p-6 rounded-lg shadow-xl border-4 border-primary/50">
+          <div className="flex justify-center items-center opacity-0 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+             <div className="bg-white p-6 rounded-lg shadow-xl border-4 border-primary/50 animate-float">
                <Image 
                  src="https://placehold.co/300x300.png"
                  alt="UPI QR Code for Donations"

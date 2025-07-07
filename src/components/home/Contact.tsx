@@ -32,7 +32,7 @@ const contactInfo = [
 export default function Contact() {
   return (
     <section id="contact" className="container mx-auto px-4 md:px-6">
-      <div className="text-center">
+      <div className="text-center opacity-0 animate-fade-in-up">
         <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
           Get in Touch
         </h2>
@@ -42,7 +42,7 @@ export default function Contact() {
       </div>
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {contactInfo.map((item, index) => (
-          <div key={index} className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-md border">
+          <div key={index} className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-md border opacity-0 animate-fade-in-up" style={{ animationDelay: `${0.2 + index * 0.15}s` }}>
             <div className="bg-primary/20 p-4 rounded-full mb-4">
                <item.icon className="h-8 w-8 text-primary" />
             </div>
