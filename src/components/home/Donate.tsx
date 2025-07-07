@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef } from "react";
 
@@ -45,7 +46,11 @@ export default function Donate() {
               Your contribution helps us fund education, healthcare, and livelihood programs for those in need. Every rupee you donate goes directly into improving lives and building a more inclusive society.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button size="lg">Donate via UPI / Bank Transfer</Button>
+              <Button size="lg" asChild>
+                <Link href="https://razorpay.me/@babudeendayalsinghcharitablet" target="_blank" rel="noopener noreferrer">
+                  Donate via Razorpay
+                </Link>
+              </Button>
               <Button size="lg" variant="outline">Set Up Monthly Giving</Button>
               <Button size="lg" variant="outline">Sponsor a Child/Patient</Button>
             </div>
