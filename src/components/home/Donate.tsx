@@ -69,7 +69,7 @@ export default function Donate() {
              <div className="bg-white p-6 rounded-lg shadow-xl border-4 border-primary/50 animate-float w-full max-w-sm">
                <h3 className="text-center font-headline text-xl font-semibold mb-4 text-foreground">Paytm QR Code</h3>
                <Image 
-                 src="https://placehold.co/300x300.png"
+                 src="https://www.babuddsinghcharitabletrust.org/assets/trusties/qr.jpg"
                  alt="UPI QR Code for Donations"
                  width={300}
                  height={300}
