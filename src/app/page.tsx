@@ -8,6 +8,7 @@ import Initiatives from '@/components/home/Initiatives';
 import Gallery from '@/components/home/Gallery';
 import Donate from '@/components/home/Donate';
 import Contact from '@/components/home/Contact';
+import Testimonials from '@/components/home/Testimonials';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <About />
         <Initiatives />
         <Gallery />
+        <Testimonials />
         <Donate />
         <Contact />
       </main>
