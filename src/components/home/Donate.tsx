@@ -53,12 +53,27 @@ export default function Donate() {
                 </CardHeader>
                 <CardContent className="space-y-3 text-muted-foreground">
                     <p>If you prefer to donate directly via bank transfer, please use the following bank details:</p>
-                    <ul className="space-y-1 font-mono text-sm bg-background/50 p-4 rounded-md border">
-                        <li><strong>A/c Name:</strong> BABU DEENDAYAL SINGH CHARITABLE TRUST</li>
-                        <li><strong>Bank:</strong> Utkarsh Small Finance Bank</li>
-                        <li><strong>A/c No:</strong> 1513020000000211</li>
-                        <li><strong>IFSC:</strong> UTKS0001513</li>
-                        <li><strong>Branch:</strong> Lanka, Varanasi, U.P. 221005</li>
+                    <ul className="space-y-2 font-mono text-sm bg-background/50 p-4 rounded-md border">
+                        <li className="flex flex-col sm:flex-row">
+                            <strong className="w-40 shrink-0">Account Name:</strong>
+                            <span>BABU DEENDAYAL SINGH CHARITABLE TRUST</span>
+                        </li>
+                        <li className="flex flex-col sm:flex-row">
+                            <strong className="w-40 shrink-0">Bank Name:</strong>
+                            <span>Utkarsh Small Finance Bank</span>
+                        </li>
+                        <li className="flex flex-col sm:flex-row">
+                            <strong className="w-40 shrink-0">Account Number:</strong>
+                            <span>1513020000000211</span>
+                        </li>
+                        <li className="flex flex-col sm:flex-row">
+                            <strong className="w-40 shrink-0">IFSC Code:</strong>
+                            <span>UTKS0001513</span>
+                        </li>
+                        <li className="flex flex-col sm:flex-row">
+                            <strong className="w-40 shrink-0">Branch Address:</strong>
+                            <span>Lanka, Varanasi, U.P. 221005</span>
+                        </li>
                     </ul>
                 </CardContent>
             </Card>
