@@ -50,7 +50,7 @@ export default function Initiatives() {
                 <h4 className="text-xl font-bold">{item.program}</h4>
                 <p className="text-muted-foreground text-base">{item.description}</p>
               </div>
-              <div className="flex items-center justify-center">
+              <div className="flex items-center justify-center animate-subtle-float">
                 <Image 
                   src={item.image} 
                   alt={item.program} 

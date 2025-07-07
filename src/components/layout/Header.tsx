@@ -26,8 +26,8 @@ export default function Header() {
           href={link.href}
           onClick={() => isMobile && setMobileMenuOpen(false)}
           className={cn(
-            "transition-colors hover:text-primary",
-            isMobile ? "block w-full p-4 text-lg" : "text-sm font-medium"
+            "transition-all hover:text-primary duration-300",
+            isMobile ? "block w-full p-4 text-lg" : "text-sm font-medium inline-block hover:-translate-y-0.5"
           )}
         >
           {link.label}

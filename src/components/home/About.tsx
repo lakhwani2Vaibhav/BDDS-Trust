@@ -54,7 +54,7 @@ export default function About() {
         </h3>
         <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-6">
           {trustees.map((trustee, i) => (
-            <div key={trustee.name} className="flex flex-col items-center text-center opacity-0 animate-fade-in-up" style={{ animationDelay: `${0.7 + i * 0.1}s` }}>
+            <div key={trustee.name} className="flex flex-col items-center text-center opacity-0 animate-fade-in-up transition-transform duration-300 hover:scale-105" style={{ animationDelay: `${0.7 + i * 0.1}s` }}>
               <Avatar className="h-24 w-24 border-2 border-primary">
                 <AvatarImage src={`https://placehold.co/100x100.png`} alt={trustee.name} />
                 <AvatarFallback>{trustee.name.charAt(0)}</AvatarFallback>
