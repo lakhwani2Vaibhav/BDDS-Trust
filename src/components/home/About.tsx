@@ -2,7 +2,15 @@
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { CheckCircle } from "lucide-react";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
 
 const trustees = [
     { name: "Mr. Sanjay Singh", role: "Founder" },
@@ -22,6 +30,9 @@ const focusAreas = [
 
 export default function About() {
   const sectionRef = useRef<HTMLElement>(null);
+  const plugin = useRef(
+    Autoplay({ delay: 1500, stopOnInteraction: true, stopOnMouseEnter: true })
+  );
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -76,21 +87,48 @@ export default function About() {
       </div>
 
       <div className="mt-20 opacity-0 scroll-anim" style={{ animationDelay: '0.6s' }}>
-        <h3 className="font-headline text-center text-2xl font-bold sm:text-3xl">
-          Meet Our Trustees
+        <h3 className="font-headline text-center text-2xl font-bold sm:text-3xl relative pb-4">
+            Meet Our Trustees
+            <span className="absolute bottom-0 left-1/2 -translate-x-1/2">
+                <svg width="100" height="10" viewBox="0 0 100 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 5C1 5 20 -3 50 5C80 13 99 5 99 5" stroke="hsl(var(--primary))" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+            </span>
         </h3>
-        <div className="mt-8 grid grid-cols-2 gap-x-6 gap-y-8 sm:grid-cols-3 lg:grid-cols-6">
-          {trustees.map((trustee, i) => (
-            <div key={trustee.name} className="flex flex-col items-center text-center opacity-0 scroll-anim transition-transform duration-300 hover:scale-105" style={{ animationDelay: `${0.7 + i * 0.1}s` }}>
-              <Avatar className="h-24 w-24 border-2 border-primary">
-                <AvatarImage src={`https://placehold.co/100x100.png`} alt={trustee.name} />
-                <AvatarFallback>{trustee.name.charAt(0)}</AvatarFallback>
-              </Avatar>
-              <p className="mt-2 font-semibold">{trustee.name}</p>
-              <p className="text-sm text-muted-foreground">{trustee.role}</p>
-            </div>
-          ))}
-        </div>
+        <Carousel
+            plugins={[plugin.current]}
+            className="w-full max-w-6xl mx-auto mt-8"
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+            opts={{
+                loop: true,
+            }}
+        >
+            <CarouselContent className="-ml-4">
+                {trustees.map((trustee) => (
+                <CarouselItem key={trustee.name} className="pl-4 md:basis-1/2 lg:basis-1/4">
+                    <div className="p-1 h-full">
+                        <div className="rounded-2xl border border-border/20 bg-card p-4 h-full flex flex-col items-center text-center shadow-lg transition-transform duration-300 hover:-translate-y-2">
+                            <div className="relative mb-4 w-36 h-36">
+                                <div className="relative w-full h-full rounded-2xl border-2 border-primary overflow-hidden shadow-inner bg-secondary">
+                                    <Avatar className="h-full w-full rounded-none">
+                                        <AvatarImage data-ai-hint="person portrait" src={`https://placehold.co/144x144.png`} alt={trustee.name} />
+                                        <AvatarFallback>{trustee.name.charAt(0)}</AvatarFallback>
+                                    </Avatar>
+                                </div>
+                                <div className="absolute -top-2 -left-2 h-6 w-6 rounded-full bg-primary flex items-center justify-center text-white font-bold text-md shadow-md">+</div>
+                                <div className="absolute -bottom-2 -right-2 h-6 w-6 rounded-full bg-primary flex items-center justify-center text-white font-bold text-md shadow-md">+</div>
+                            </div>
+                            <p className="mt-2 font-semibold text-lg">{trustee.name}</p>
+                            <p className="text-sm text-muted-foreground">{trustee.role}</p>
+                        </div>
+                    </div>
+                </CarouselItem>
+                ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden sm:flex" />
+            <CarouselNext className="hidden sm:flex" />
+        </Carousel>
       </div>
     </section>
   );
