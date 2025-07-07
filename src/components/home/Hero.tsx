@@ -52,11 +52,14 @@ export default function Hero() {
           <Button size="lg" asChild>
             <Link href="#donate">Donate Now</Link>
           </Button>
-          <Button size="lg" variant="secondary" asChild>
+          <Button size="lg" variant="outline" asChild className="bg-transparent text-white hover:bg-white hover:text-primary border-white">
             <Link href="#initiatives">Know Our Work</Link>
           </Button>
-          <Button size="lg" variant="secondary" asChild>
+          <Button size="lg" variant="outline" asChild className="bg-transparent text-white hover:bg-white hover:text-primary border-white">
             <Link href="#contact">Contact Us</Link>
+          </Button>
+          <Button size="lg" variant="outline" asChild className="bg-transparent text-white hover:bg-white hover:text-primary border-white">
+            <Link href="/content-rewriter">Content Rewriter</Link>
           </Button>
         </div>
       </div>
