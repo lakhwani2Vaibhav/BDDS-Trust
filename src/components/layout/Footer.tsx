@@ -6,8 +6,8 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-8 md:px-6">
         <div className="flex flex-col items-center gap-4">
             <div className="flex flex-wrap justify-center gap-6 text-sm">
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 inline-block hover:-translate-y-0.5">Privacy Policy</Link>
-                <Link href="#" className="text-muted-foreground hover:text-primary transition-all duration-300 inline-block hover:-translate-y-0.5">Terms of Service</Link>
+                <Link href="/privacy-policy" className="text-muted-foreground hover:text-primary transition-all duration-300 inline-block hover:-translate-y-0.5">Privacy Policy</Link>
+                <Link href="/terms-of-service" className="text-muted-foreground hover:text-primary transition-all duration-300 inline-block hover:-translate-y-0.5">Terms of Service</Link>
                 <Link href="#contact" className="text-muted-foreground hover:text-primary transition-all duration-300 inline-block hover:-translate-y-0.5">Contact Us</Link>
             </div>
             <div className="text-center text-sm text-muted-foreground">
