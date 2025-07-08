@@ -40,6 +40,23 @@ const testimonials = [
   },
 ];
 
+const TestimonialCard = ({ quote, author, role }: { quote: string, author: string, role: string }) => (
+    <Card className="h-full bg-background shadow-lg border border-border/20">
+        <CardContent className="p-6 flex flex-col justify-between h-full">
+            <div>
+                <Quote className="w-8 h-8 sm:w-10 sm:h-10 text-primary" fill="hsl(var(--primary))" strokeWidth={0} />
+                <p className="mt-4 text-muted-foreground italic text-sm sm:text-base">
+                    "{quote}"
+                </p>
+            </div>
+            <div className="mt-6 pt-4 border-t">
+                <p className="font-semibold text-sm sm:text-base">{author}</p>
+                <p className="text-sm text-muted-foreground">{role}</p>
+            </div>
+        </CardContent>
+    </Card>
+);
+
 export default function Testimonials() {
   const sectionRef = useRef<HTMLElement>(null);
   const plugin = useRef(
@@ -71,51 +88,58 @@ export default function Testimonials() {
   return (
     <section id="testimonials" ref={sectionRef} className="bg-secondary">
       <div className="container mx-auto px-4 md:px-6">
-        <Carousel
-            plugins={[plugin.current]}
-            className="w-full"
-            opts={{
-                loop: true,
-                align: "start",
-            }}
-        >
-            <div className="grid lg:grid-cols-12 gap-8 items-center">
-                <div className="lg:col-span-4 text-center lg:text-left opacity-0 scroll-anim">
-                    <p className="text-muted-foreground font-medium">Testimonials</p>
-                    <h2 className="font-headline text-2xl font-bold tracking-tight sm:text-3xl mt-2">
-                        What People Say About Us
-                    </h2>
-                    <div className="mt-6 justify-center lg:justify-start flex gap-2">
-                        <CarouselPrevious className="relative -left-0 top-0 -translate-y-0" />
-                        <CarouselNext className="relative -left-0 top-0 -translate-y-0" />
+        {/* Desktop Carousel View */}
+        <div className="hidden lg:block">
+            <Carousel
+                plugins={[plugin.current]}
+                className="w-full"
+                opts={{
+                    loop: true,
+                    align: "start",
+                }}
+            >
+                <div className="grid grid-cols-12 gap-8 items-center">
+                    <div className="col-span-4 text-center lg:text-left opacity-0 scroll-anim">
+                        <p className="text-muted-foreground font-medium">Testimonials</p>
+                        <h2 className="font-headline text-2xl font-bold tracking-tight sm:text-3xl mt-2">
+                            What People Say About Us
+                        </h2>
+                        <div className="mt-6 justify-center lg:justify-start flex gap-2">
+                            <CarouselPrevious className="relative -left-0 top-0 -translate-y-0" />
+                            <CarouselNext className="relative -left-0 top-0 -translate-y-0" />
+                        </div>
+                    </div>
+                    <div className="col-span-8 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
+                        <CarouselContent className="-ml-4">
+                            {testimonials.map((testimonial, index) => (
+                            <CarouselItem key={index} className="pl-4 basis-full lg:basis-1/2">
+                                <div className="p-1 h-full">
+                                    <TestimonialCard {...testimonial} />
+                                </div>
+                            </CarouselItem>
+                            ))}
+                        </CarouselContent>
                     </div>
                 </div>
-                <div className="lg:col-span-8 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
-                    <CarouselContent className="-ml-4">
-                        {testimonials.map((testimonial, index) => (
-                        <CarouselItem key={index} className="pl-4 basis-full lg:basis-1/2">
-                            <div className="p-1 h-full">
-                                <Card className="h-full bg-background shadow-lg border border-border/20">
-                                    <CardContent className="p-6 flex flex-col justify-between h-full">
-                                        <div>
-                                            <Quote className="w-8 h-8 sm:w-10 sm:h-10 text-primary" fill="hsl(var(--primary))" strokeWidth={0} />
-                                            <p className="mt-4 text-muted-foreground italic text-sm sm:text-base">
-                                                "{testimonial.quote}"
-                                            </p>
-                                        </div>
-                                        <div className="mt-6 pt-4 border-t">
-                                            <p className="font-semibold text-sm sm:text-base">{testimonial.author}</p>
-                                            <p className="text-sm text-muted-foreground">{testimonial.role}</p>
-                                        </div>
-                                    </CardContent>
-                                </Card>
-                            </div>
-                        </CarouselItem>
-                        ))}
-                    </CarouselContent>
-                </div>
+            </Carousel>
+        </div>
+
+        {/* Mobile/Tablet Vertical View */}
+        <div className="block lg:hidden">
+            <div className="text-center opacity-0 scroll-anim">
+                <p className="text-muted-foreground font-medium">Testimonials</p>
+                <h2 className="font-headline text-2xl font-bold tracking-tight sm:text-3xl mt-2">
+                    What People Say About Us
+                </h2>
             </div>
-        </Carousel>
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                 {testimonials.map((testimonial, index) => (
+                    <div key={index} className="opacity-0 scroll-anim" style={{ animationDelay: `${0.1 * index}s` }}>
+                        <TestimonialCard {...testimonial} />
+                    </div>
+                ))}
+            </div>
+        </div>
       </div>
     </section>
   );
