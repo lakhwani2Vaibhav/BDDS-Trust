@@ -75,9 +75,19 @@ export default function Contact() {
             </div>
             <h3 className="font-headline text-xl font-semibold mb-2">{item.title}</h3>
             <div className="text-muted-foreground text-sm sm:text-base break-all">
-                {item.details.map((line, i) => (
-                    <p key={i}>{line}</p>
-                ))}
+                {item.title === 'Phone' && item.details.length > 0 ? (
+                    <a href={`tel:${item.details[0]}`} className="hover:text-primary hover:underline">
+                        {item.details[0]}
+                    </a>
+                ) : item.title === 'Email' && item.details.length > 0 ? (
+                    <a href={`mailto:${item.details[0]}`} className="hover:text-primary hover:underline">
+                        {item.details[0]}
+                    </a>
+                ) : (
+                    item.details.map((line, i) => (
+                        <p key={i}>{line}</p>
+                    ))
+                )}
             </div>
           </div>
         ))}
