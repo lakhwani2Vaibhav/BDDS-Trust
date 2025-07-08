@@ -13,12 +13,12 @@ import {
 import Autoplay from "embla-carousel-autoplay";
 
 const trustees = [
-    { name: "Mr. Sanjay Singh", role: "Founder" },
-    { name: "Mr. Subodh Jaiswal", role: "Co-Founder" },
-    { name: "Mr. Kaushal Kumar Dubey", role: "Co-Founder" },
-    { name: "Smt. Neelam Singh", role: "Chairman" },
-    { name: "Smt. Akriti Singh", role: "Vice Chairman" },
-    { name: "Mr. Amit Kumar Singh", role: "Secretary" },
+    { name: "Mr. Sumit Sinha", role: "Founder", image: "/assets/trusties/sumit_sinha.jpg" },
+    { name: "Mr. Subodh Jaiswal", role: "Co-Founder", image: "/assets/trusties/subodh_jaiswal.jpg" },
+    { name: "Mr. Kaushal Kumar Dubey", role: "Co-Founder", image: "/assets/trusties/kaushal_kumar_dubey.jpg" },
+    { name: "Smt. Neelam Singh", role: "Chairman", image: "/assets/trusties/neelam_singh.jpg" },
+    { name: "Smt. Akriti Singh", role: "Vice Chairman", image: "/assets/trusties/akriti_singh.jpg" },
+    { name: "Mr. Amit Kumar Singh", role: "Secretary", image: "/assets/trusties/amit_kumar_singh.jpg" },
 ];
 
 const focusAreas = [
@@ -111,7 +111,7 @@ export default function About() {
                             <div className="relative mb-4 w-36 h-36">
                                 <div className="relative w-full h-full rounded-2xl border-2 border-primary overflow-hidden shadow-inner bg-secondary">
                                     <Avatar className="h-full w-full rounded-none">
-                                        <AvatarImage data-ai-hint="person portrait" src={`https://placehold.co/144x144.png`} alt={trustee.name} className="transition-transform duration-300 group-hover:scale-110" />
+                                        <AvatarImage data-ai-hint="person portrait" src={trustee.image} alt={trustee.name} className="transition-transform duration-300 group-hover:scale-110 object-cover" />
                                         <AvatarFallback>{trustee.name.charAt(0)}</AvatarFallback>
                                     </Avatar>
                                 </div>
