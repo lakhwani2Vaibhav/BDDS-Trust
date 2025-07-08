@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Facebook, Instagram, Twitter, Youtube } from "lucide-react";
 
 const socialLinks = [
-  { href: "#", icon: Facebook, label: "Facebook" },
+  { href: "https://www.facebook.com/babuddsinghtrust", icon: Facebook, label: "Facebook" },
   { href: "#", icon: Twitter, label: "Twitter" },
-  { href: "#", icon: Instagram, label: "Instagram" },
-  { href: "#", icon: Linkedin, label: "LinkedIn" },
+  { href: "https://www.instagram.com/ddcharaitabletrust/", icon: Instagram, label: "Instagram" },
+  { href: "https://www.youtube.com/watch?v=5PlQjrYMfvA&feature=youtu.be", icon: Youtube, label: "YouTube" },
 ];
 
 
