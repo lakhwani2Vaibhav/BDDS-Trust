@@ -39,7 +39,7 @@ export default function Header() {
   return (
     <header className="bg-background border-b sticky top-0 z-50">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="flex items-center gap-2 font-bold text-lg shrink-0">
+        <Link href="/" className="flex items-center gap-2 font-bold text-lg shrink-0" aria-label="Babu D.D. Singh Charitable Trust Home">
           <Gem className="h-6 w-6 text-primary" />
           <span className="font-headline text-xl hidden sm:inline">Babu D.D. Singh Charitable Trust</span>
         </Link>
