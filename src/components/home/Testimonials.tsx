@@ -59,8 +59,11 @@ const TestimonialCard = ({ quote, author, role }: { quote: string, author: strin
 
 export default function Testimonials() {
   const sectionRef = useRef<HTMLElement>(null);
-  const plugin = useRef(
+  const horizontalPlugin = useRef(
     Autoplay({ delay: 1500, stopOnInteraction: false, stopOnMouseEnter: false })
+  );
+  const verticalPlugin = useRef(
+    Autoplay({ delay: 2500, stopOnInteraction: false, stopOnMouseEnter: false })
   );
 
   useEffect(() => {
@@ -91,7 +94,7 @@ export default function Testimonials() {
         {/* Desktop Carousel View */}
         <div className="hidden lg:block">
             <Carousel
-                plugins={[plugin.current]}
+                plugins={[horizontalPlugin.current]}
                 className="w-full"
                 opts={{
                     loop: true,
@@ -132,12 +135,26 @@ export default function Testimonials() {
                     What People Say About Us
                 </h2>
             </div>
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                 {testimonials.map((testimonial, index) => (
-                    <div key={index} className="opacity-0 scroll-anim" style={{ animationDelay: `${0.1 * index}s` }}>
-                        <TestimonialCard {...testimonial} />
-                    </div>
-                ))}
+            <div className="mt-8 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
+                 <Carousel
+                    plugins={[verticalPlugin.current]}
+                    className="w-full max-w-xl mx-auto"
+                    opts={{
+                        loop: true,
+                        align: "start"
+                    }}
+                    orientation="vertical"
+                >
+                    <CarouselContent className="-mt-4 h-[38rem]">
+                        {testimonials.map((testimonial, index) => (
+                        <CarouselItem key={index} className="pt-4 basis-1/2">
+                            <div className="p-1 h-full">
+                                <TestimonialCard {...testimonial} />
+                            </div>
+                        </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                </Carousel>
             </div>
         </div>
       </div>
