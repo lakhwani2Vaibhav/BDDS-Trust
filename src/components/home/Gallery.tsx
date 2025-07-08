@@ -10,7 +10,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const PADDING_DIGITS = 4;
 const totalImages = 137;
 
-const excludedImageNumbers = new Set([10, 11, 13, 15, 17, 20, 21, 24, 25, 27, 29, 31, 33, 34, 37, 38, 44]);
+const excludedImageNumbers = new Set([10, 11, 13, 15, 17, 20, 21, 24, 25, 27, 29, 31, 33, 34, 37, 38, 44, 67, 70, 75, 78, 82, 83, 86, 96, 121, 122, 124, 125]);
 
 const masonryPattern = [
   "col-span-1 row-span-1 md:col-span-2",
