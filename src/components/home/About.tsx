@@ -41,9 +41,6 @@ export default function About() {
           if (entry.isIntersecting) {
             entry.target.classList.remove('opacity-0');
             entry.target.classList.add('animate-fade-in-up');
-          } else {
-            entry.target.classList.add('opacity-0');
-            entry.target.classList.remove('animate-fade-in-up');
           }
         });
       },
@@ -65,7 +62,7 @@ export default function About() {
       </div>
 
       <div className="mt-12 grid gap-8 md:gap-16 md:grid-cols-5">
-        <div className="space-y-4 md:col-span-3 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
+        <div className="space-y-4 md:col-span-3 opacity-0 scroll-anim" style={{ animationDelay: '0.1s' }}>
           <p className="text-lg text-muted-foreground">
             Babu D.D. Singh Charitable Trust is dedicated to enabling differently abled and marginalized children and youth to receive comprehensive rehabilitation, education, and vocational training. Our mission is to empower these individuals so they can take care of their social, physical, and spiritual needs, and become fully integrated into society.
           </p>
@@ -73,7 +70,7 @@ export default function About() {
             We envision a world that ensures the inclusion of differently abled and marginalized children and youth into mainstream society. Our aim is to create an environment where they feel welcome, supported, and empowered.
           </p>
         </div>
-        <div className="md:col-span-2 opacity-0 scroll-anim" style={{ animationDelay: '0.4s' }}>
+        <div className="md:col-span-2 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
             <h3 className="font-headline text-xl font-semibold mb-4">Our Core Focus Areas</h3>
             <ul className="space-y-3">
                 {focusAreas.map((area) => (
@@ -86,7 +83,7 @@ export default function About() {
         </div>
       </div>
 
-      <div className="mt-16 sm:mt-20 opacity-0 scroll-anim" style={{ animationDelay: '0.6s' }}>
+      <div className="mt-16 sm:mt-20 opacity-0 scroll-anim" style={{ animationDelay: '0.3s' }}>
         <h3 className="font-headline text-center text-2xl font-bold sm:text-3xl relative pb-4">
             Meet Our Trustees
             <span className="absolute bottom-0 left-1/2 -translate-x-1/2">

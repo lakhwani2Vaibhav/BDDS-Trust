@@ -17,9 +17,6 @@ export default function Donate() {
           if (entry.isIntersecting) {
             entry.target.classList.remove('opacity-0');
             entry.target.classList.add('animate-fade-in-up');
-          } else {
-            entry.target.classList.add('opacity-0');
-            entry.target.classList.remove('animate-fade-in-up');
           }
         });
       },
@@ -44,7 +41,7 @@ export default function Donate() {
               Your generous donation will help us continue our mission and reach out to more people in need. You can donate via Paytm, Gpay, PhonePe or directly through a bank transfer.
             </p>
             
-            <Card className="border-primary/20 shadow-lg">
+            <Card className="border-primary/20 shadow-lg transition-all hover:shadow-primary/20">
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2 font-headline text-xl">
                         <Landmark className="h-6 w-6 text-primary"/>
@@ -93,7 +90,7 @@ export default function Donate() {
                />
                <p className="mt-4 text-center font-semibold text-foreground">Scan with Paytm, GPay, or PhonePe</p>
              </div>
-             <Button size="lg" asChild className="w-full max-w-sm">
+             <Button size="lg" asChild className="w-full max-w-sm transition-transform hover:scale-105">
                 <Link href="https://razorpay.me/@babudeendayalsinghcharitablet" target="_blank" rel="noopener noreferrer">
                   <Banknote className="mr-2"/> Donate via Razorpay
                 </Link>

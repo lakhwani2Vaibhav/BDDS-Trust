@@ -6,32 +6,46 @@ import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
 
-const allGalleryItems = [
-  { src: "/assets/gallary/IMG-20240519-WA0001.jpg", alt: "Gallery image 1", hint: "community event", span: "col-span-1 row-span-1 md:col-span-2" },
-  { src: "/assets/gallary/IMG-20240519-WA0002.jpg", alt: "Gallery image 2", hint: "children smiling", span: "col-span-1 row-span-1 md:row-span-2" },
-  { src: "/assets/gallary/IMG-20240519-WA0003.jpg", alt: "Gallery image 3", hint: "group photo", span: "col-span-1 row-span-1" },
-  { src: "/assets/gallary/IMG-20240519-WA0006.jpg", alt: "Gallery image 4", hint: "community gathering", span: "col-span-1 row-span-1" },
-  { src: "/assets/gallary/IMG-20240519-WA0007.jpg", alt: "Gallery image 5", hint: "event participants", span: "col-span-1 row-span-1 md:col-span-2" },
-  { src: "/assets/gallary/IMG-20240519-WA0008.jpg", alt: "Gallery image 6", hint: "people together", span: "col-span-1 row-span-1" },
-  { src: "/assets/gallary/IMG-20240519-WA0009.jpg", alt: "Gallery image 7", hint: "charity work", span: "col-span-1 row-span-1" },
-  { src: "/assets/gallary/IMG-20240519-WA0012.jpg", alt: "Gallery image 8", hint: "volunteers", span: "col-span-1 row-span-1 md:row-span-2" },
-  { src: "/assets/gallary/IMG-20240519-WA0014.jpg", alt: "Gallery image 9", hint: "donation drive", span: "col-span-1 row-span-1 md:col-span-2" },
-  { src: "/assets/gallary/IMG-20240519-WA0016.jpg", alt: "Gallery image 10", hint: "supporting children", span: "col-span-1 row-span-1" },
-  { src: "/assets/gallary/IMG-20240519-WA0018.jpg", alt: "Gallery image 11", hint: "community outreach", span: "col-span-1 row-span-1" },
-  { src: "/assets/gallary/IMG-20240519-WA0019.jpg", alt: "Gallery image 12", hint: "empowerment", span: "col-span-1 row-span-1" },
-  { src: "/assets/gallary/IMG-20240519-WA0022.jpg", alt: "Gallery image 13", hint: "social activity", span: "col-span-1 row-span-1 md:col-span-2" },
-  { src: "/assets/gallary/IMG-20240519-WA0023.jpg", alt: "Gallery image 14", hint: "helping hands", span: "col-span-1 row-span-1" },
-  { src: "/assets/gallary/IMG-20240519-WA0026.jpg", alt: "Gallery image 15", hint: "trust event", span: "col-span-1 row-span-1 md:row-span-2" },
+const PADDING_DIGITS = 4;
+const totalImages = 137;
+
+const masonryPattern = [
+  "col-span-1 row-span-1 md:col-span-2",
+  "col-span-1 row-span-1 md:row-span-2",
+  "col-span-1 row-span-1",
+  "col-span-1 row-span-1",
+  "col-span-1 row-span-1 md:col-span-2",
+  "col-span-1 row-span-1",
+  "col-span-1 row-span-1",
+  "col-span-1 row-span-1 md:row-span-2",
+  "col-span-1 row-span-1 md:col-span-2",
+  "col-span-1 row-span-1",
+  "col-span-1 row-span-1",
+  "col-span-1 row-span-1",
+  "col-span-1 row-span-1 md:col-span-2",
+  "col-span-1 row-span-1",
+  "col-span-1 row-span-1 md:row-span-2",
 ];
 
-const INITIAL_VISIBLE_COUNT = 6;
+const allGalleryItems = Array.from({ length: totalImages }, (_, i) => {
+  const imgNumber = i + 1;
+  return {
+    src: `/assets/gallary/IMG-20240519-WA${String(imgNumber).padStart(PADDING_DIGITS, '0')}.jpg`,
+    alt: `Gallery image ${imgNumber}`,
+    hint: "community event charity",
+    span: masonryPattern[i % masonryPattern.length],
+  };
+});
+
+const INITIAL_VISIBLE_COUNT = 12;
+const IMAGES_TO_LOAD = 12;
 
 export default function Gallery() {
   const sectionRef = useRef<HTMLElement>(null);
   const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
 
   const loadMoreImages = () => {
-    setVisibleCount(allGalleryItems.length);
+    setVisibleCount(prevCount => prevCount + IMAGES_TO_LOAD);
   };
 
   useEffect(() => {
@@ -41,9 +55,7 @@ export default function Gallery() {
           if (entry.isIntersecting) {
             entry.target.classList.remove('opacity-0');
             entry.target.classList.add('animate-fade-in-up');
-          } else {
-            entry.target.classList.add('opacity-0');
-            entry.target.classList.remove('animate-fade-in-up');
+            observer.unobserve(entry.target);
           }
         });
       },
@@ -54,7 +66,7 @@ export default function Gallery() {
     elements.forEach((el) => observer.observe(el));
 
     return () => elements.forEach((el) => observer.unobserve(el));
-  }, []);
+  }, [visibleCount]);
 
   return (
     <section id="gallery" ref={sectionRef} className="container mx-auto px-4 md:px-6">
@@ -68,7 +80,7 @@ export default function Gallery() {
       </div>
       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] sm:auto-rows-[200px] md:auto-rows-[250px] gap-4">
         {allGalleryItems.slice(0, visibleCount).map((item, index) => (
-          <div key={index} className={cn("overflow-hidden rounded-lg shadow-md group opacity-0 scroll-anim animate-subtle-float", item.span)} style={{ animationDelay: `${0.2 + (index % INITIAL_VISIBLE_COUNT) * 0.1}s` }}>
+          <div key={item.src} className={cn("overflow-hidden rounded-lg shadow-md group opacity-0 scroll-anim transition-all duration-300 hover:shadow-xl hover:!scale-105", item.span)} style={{ animationDelay: `${(index % INITIAL_VISIBLE_COUNT) * 0.05}s` }}>
             <div className="relative w-full h-full">
                <Image
                 src={item.src}
@@ -76,16 +88,16 @@ export default function Gallery() {
                 data-ai-hint={item.hint}
                 layout="fill"
                 objectFit="cover"
-                className="transition-transform duration-500 group-hover:scale-105"
+                className="transition-transform duration-500 group-hover:scale-110"
               />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors" />
             </div>
           </div>
         ))}
       </div>
       {visibleCount < allGalleryItems.length && (
         <div className="mt-8 text-center opacity-0 scroll-anim" style={{ animationDelay: '0.5s' }}>
-          <Button onClick={loadMoreImages} size="lg">
+          <Button onClick={loadMoreImages} size="lg" className="transition-transform hover:scale-105">
             <Plus className="mr-2 h-5 w-5" />
             Load More
           </Button>

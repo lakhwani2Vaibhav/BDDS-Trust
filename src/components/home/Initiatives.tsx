@@ -44,9 +44,6 @@ export default function Initiatives() {
           if (entry.isIntersecting) {
             entry.target.classList.remove('opacity-0');
             entry.target.classList.add('animate-fade-in-up');
-          } else {
-            entry.target.classList.add('opacity-0');
-            entry.target.classList.remove('animate-fade-in-up');
           }
         });
       },
@@ -71,7 +68,7 @@ export default function Initiatives() {
 
         <div className="mt-12 sm:mt-20 space-y-12 md:space-y-20">
           {initiatives.map((item, index) => (
-            <div key={item.title} className="grid md:grid-cols-2 gap-8 md:gap-16 items-center opacity-0 scroll-anim" style={{ animationDelay: `${0.2 + index * 0.2}s` }}>
+            <div key={item.title} className="grid md:grid-cols-2 gap-8 md:gap-16 items-center opacity-0 scroll-anim" style={{ animationDelay: `${0.1 + index * 0.1}s` }}>
               <div className={`space-y-4 ${index % 2 !== 0 ? 'md:order-last' : ''}`}>
                 <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">{item.title}</h3>
                 <h4 className="text-xl font-bold">{item.program}</h4>
@@ -83,7 +80,7 @@ export default function Initiatives() {
                   alt={item.program} 
                   width={500} 
                   height={320} 
-                  className="rounded-lg shadow-md"
+                  className="rounded-lg shadow-xl transition-transform duration-300 hover:scale-105"
                   data-ai-hint={item.aiHint}
                 />
               </div>

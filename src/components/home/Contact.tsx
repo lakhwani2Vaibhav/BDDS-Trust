@@ -42,9 +42,6 @@ export default function Contact() {
           if (entry.isIntersecting) {
             entry.target.classList.remove('opacity-0');
             entry.target.classList.add('animate-fade-in-up');
-          } else {
-            entry.target.classList.add('opacity-0');
-            entry.target.classList.remove('animate-fade-in-up');
           }
         });
       },
@@ -69,7 +66,7 @@ export default function Contact() {
       </div>
       <div className="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
         {contactInfo.map((item, index) => (
-          <div key={index} className="flex flex-col items-center text-center p-4 sm:p-6 bg-card rounded-lg shadow-md border opacity-0 scroll-anim transition-transform duration-300 hover:-translate-y-2" style={{ animationDelay: `${0.2 + index * 0.15}s` }}>
+          <div key={index} className="flex flex-col items-center text-center p-4 sm:p-6 bg-card rounded-lg shadow-md border opacity-0 scroll-anim transition-all duration-300 hover:-translate-y-2 hover:shadow-primary/20" style={{ animationDelay: `${0.1 + index * 0.1}s` }}>
             <div className="bg-primary/20 p-3 sm:p-4 rounded-full mb-4">
                <item.icon className="h-7 w-7 sm:h-8 sm:w-8 text-primary" />
             </div>
