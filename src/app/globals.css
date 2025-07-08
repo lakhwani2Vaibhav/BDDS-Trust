@@ -50,6 +50,9 @@
 }
 
 @layer base {
+  html {
+    scroll-padding-top: 5rem; /* 80px, to offset for sticky header */
+  }
   * {
     @apply border-border;
   }
