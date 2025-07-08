@@ -41,8 +41,8 @@ export default function Hero() {
         data-ai-hint="community outreach"
         priority
       />
-      <div className="relative z-10 container mx-auto text-center px-4">
-        <h1 className="font-headline text-3xl sm:text-5xl md:text-6xl font-bold !leading-tight tracking-tight opacity-0 scroll-anim">
+      <div className="relative z-10 container mx-auto text-center px-4 pt-16 sm:pt-0">
+        <h1 className="font-headline text-3xl sm:text-5xl md:text-6xl font-bold leading-tight tracking-tight opacity-0 scroll-anim">
           Serving Humanity with Compassion & Purpose
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-200 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
