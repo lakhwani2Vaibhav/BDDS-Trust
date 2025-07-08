@@ -10,6 +10,8 @@ import { useIsMobile } from "@/hooks/use-mobile";
 const PADDING_DIGITS = 4;
 const totalImages = 137;
 
+const excludedImageNumbers = new Set([10, 11, 13, 15, 17, 20, 21, 24, 25, 27, 29, 31, 33, 34, 37, 38, 44]);
+
 const masonryPattern = [
   "col-span-1 row-span-1 md:col-span-2",
   "col-span-1 row-span-1 md:row-span-2",
@@ -28,15 +30,14 @@ const masonryPattern = [
   "col-span-1 row-span-1 md:row-span-2",
 ];
 
-const allGalleryItems = Array.from({ length: totalImages }, (_, i) => {
-  const imgNumber = i + 1;
-  return {
+const allGalleryItems = Array.from({ length: totalImages }, (_, i) => i + 1)
+  .filter(imgNumber => !excludedImageNumbers.has(imgNumber))
+  .map((imgNumber, index) => ({
     src: `/assets/gallary/IMG-20240519-WA${String(imgNumber).padStart(PADDING_DIGITS, '0')}.jpg`,
     alt: `Gallery image ${imgNumber}`,
     hint: "community event charity",
-    span: masonryPattern[i % masonryPattern.length],
-  };
-});
+    span: masonryPattern[index % masonryPattern.length],
+  }));
 
 
 const IMAGES_TO_LOAD = 9;
