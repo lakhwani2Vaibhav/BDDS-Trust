@@ -8,28 +8,28 @@ const initiatives = [
     title: "Health",
     program: "Healthcare Programs",
     description: "We provide access to quality healthcare services, including medical camps, health awareness programs, and support for patients in need. Our initiatives aim to improve health outcomes and ensure well-being for all.",
-    image: "https://placehold.co/500x320.png",
+    image: "https://www.cry.org/wp-content/themes/cry/images/child-health-and-nutrition/child-health-and-nutrition.jpg",
     aiHint: "doctor patient"
   },
   {
     title: "Education",
     program: "Educational Support",
     description: "Our education programs focus on providing quality education to underprivileged children. We support schools, provide educational materials, and offer scholarships to deserving students, fostering a brighter future.",
-    image: "https://placehold.co/500x320.png",
+    image: "https://www.youthhelpingtrust.org/wp-content/uploads/2020/10/e1.jpg",
     aiHint: "children classroom"
   },
   {
     title: "Livelihood",
     program: "Livelihood Programs",
     description: "We empower individuals with skills and resources to improve their livelihoods. Our programs include vocational training, entrepreneurship support, and job placement assistance, enabling economic independence.",
-    image: "https://placehold.co/500x320.png",
+    image: "https://www.hiteshiindia.org/assets/images/campaign/womenempowering.jpg",
     aiHint: "person writing desk"
   },
   {
     title: "Higher Education",
     program: "Higher Education Support",
     description: "We support students pursuing higher education by providing scholarships and mentorship. Our goal is to help them achieve their academic and career aspirations, contributing to a skilled workforce.",
-    image: "https://placehold.co/500x320.png",
+    image: "https://karta-initiative.org.in/wp-content/uploads/2025/01/WhatsApp-Image-2023-09-27-at-3.42.09-PM-1.jpeg",
     aiHint: "student writing books"
   }
 ];
