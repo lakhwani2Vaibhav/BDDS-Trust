@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const PADDING_DIGITS = 4;
 const totalImages = 137;
@@ -37,14 +38,28 @@ const allGalleryItems = Array.from({ length: totalImages }, (_, i) => {
   };
 });
 
-const INITIAL_VISIBLE_COUNT = 7;
+
 const IMAGES_TO_LOAD = 9;
+const DESKTOP_INITIAL_COUNT = 7;
+const MOBILE_INITIAL_COUNT = 8;
 
 export default function Gallery() {
   const sectionRef = useRef<HTMLElement>(null);
-  const [visibleCount, setVisibleCount] = useState(INITIAL_VISIBLE_COUNT);
+  const isMobile = useIsMobile();
+
+  const [visibleCount, setVisibleCount] = useState(DESKTOP_INITIAL_COUNT);
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  useEffect(() => {
+    if (!hasInteracted) {
+      setVisibleCount(isMobile ? MOBILE_INITIAL_COUNT : DESKTOP_INITIAL_COUNT);
+    }
+  }, [isMobile, hasInteracted]);
 
   const loadMoreImages = () => {
+    if (!hasInteracted) {
+        setHasInteracted(true);
+    }
     setVisibleCount(prevCount => prevCount + IMAGES_TO_LOAD);
   };
 
@@ -68,6 +83,8 @@ export default function Gallery() {
     return () => elements.forEach((el) => observer.unobserve(el));
   }, [visibleCount]);
 
+  const initialAnimationCount = isMobile ? MOBILE_INITIAL_COUNT : DESKTOP_INITIAL_COUNT;
+
   return (
     <section id="gallery" ref={sectionRef} className="container mx-auto px-4 md:px-6">
       <div className="text-center opacity-0 scroll-anim">
@@ -80,7 +97,7 @@ export default function Gallery() {
       </div>
       <div className="mt-12 grid grid-cols-2 md:grid-cols-4 auto-rows-[150px] sm:auto-rows-[200px] md:auto-rows-[250px] gap-4">
         {allGalleryItems.slice(0, visibleCount).map((item, index) => (
-          <div key={item.src} className={cn("overflow-hidden rounded-lg shadow-md group opacity-0 scroll-anim transition-all duration-300 hover:shadow-xl hover:!scale-105", item.span)} style={{ animationDelay: `${(index % INITIAL_VISIBLE_COUNT) * 0.05}s` }}>
+          <div key={item.src} className={cn("overflow-hidden rounded-lg shadow-md group opacity-0 scroll-anim transition-all duration-300 hover:shadow-xl hover:!scale-105", item.span)} style={{ animationDelay: `${(index % initialAnimationCount) * 0.05}s` }}>
             <div className="relative w-full h-full">
                <Image
                 src={item.src}
