@@ -74,7 +74,7 @@ export default function Contact() {
                <item.icon className="h-7 w-7 sm:h-8 sm:w-8 text-primary" />
             </div>
             <h3 className="font-headline text-xl font-semibold mb-2">{item.title}</h3>
-            <div className="text-muted-foreground text-sm sm:text-base break-words">
+            <div className="text-muted-foreground text-sm sm:text-base break-all">
                 {item.details.map((line, i) => (
                     <p key={i}>{line}</p>
                 ))}
