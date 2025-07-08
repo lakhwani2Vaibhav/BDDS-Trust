@@ -42,7 +42,6 @@ export default function Header() {
         <Link href="/" className="flex items-center gap-2 font-bold text-lg shrink-0">
           <Gem className="h-6 w-6 text-primary" />
           <span className="font-headline text-xl hidden md:inline">Babu D.D. Singh Charitable Trust</span>
-          <span className="font-headline text-lg md:hidden">B.D.D.S. Trust</span>
         </Link>
 
         <div className="flex items-center gap-4">
