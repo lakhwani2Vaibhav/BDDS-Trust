@@ -2,9 +2,10 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Menu, Gem } from "lucide-react";
+import { Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
@@ -40,7 +41,7 @@ export default function Header() {
     <header className="bg-background border-b sticky top-0 z-50">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 font-bold text-lg shrink-0" aria-label="Babu D.D. Singh Charitable Trust Home">
-          <Gem className="h-6 w-6 text-primary" />
+          <Image src="/assets/gallary/IMG-20240519-WA0080.jpg" alt="Babu D.D. Singh Charitable Trust Logo" width={40} height={40} className="h-10 w-10 rounded-full" />
           <span className="font-headline text-xl hidden sm:inline">Babu D.D. Singh Charitable Trust</span>
         </Link>
 
@@ -64,7 +65,7 @@ export default function Header() {
                 <SheetContent side="right">
                     <div className="flex flex-col gap-6 pt-6">
                     <Link href="/" className="flex items-center gap-2 font-bold text-lg px-6" onClick={() => setMobileMenuOpen(false)}>
-                        <Gem className="h-7 w-7 text-primary" />
+                        <Image src="/assets/gallary/IMG-20240519-WA0080.jpg" alt="Babu D.D. Singh Charitable Trust Logo" width={40} height={40} className="h-10 w-10 rounded-full" />
                         <span className="font-headline text-xl">B.D.D.S. Trust</span>
                     </Link>
                     <nav className="flex flex-col gap-2">
