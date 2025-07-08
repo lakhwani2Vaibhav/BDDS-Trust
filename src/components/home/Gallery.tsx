@@ -37,8 +37,8 @@ const allGalleryItems = Array.from({ length: totalImages }, (_, i) => {
   };
 });
 
-const INITIAL_VISIBLE_COUNT = 12;
-const IMAGES_TO_LOAD = 12;
+const INITIAL_VISIBLE_COUNT = 7;
+const IMAGES_TO_LOAD = 9;
 
 export default function Gallery() {
   const sectionRef = useRef<HTMLElement>(null);
