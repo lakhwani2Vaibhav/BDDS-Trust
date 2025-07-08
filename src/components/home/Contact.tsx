@@ -67,14 +67,14 @@ export default function Contact() {
           We'd love to hear from you. Whether you have a question, a suggestion, or want to get involved, please don't hesitate to reach out.
         </p>
       </div>
-      <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         {contactInfo.map((item, index) => (
-          <div key={index} className="flex flex-col items-center text-center p-6 bg-card rounded-lg shadow-md border opacity-0 scroll-anim transition-transform duration-300 hover:-translate-y-2" style={{ animationDelay: `${0.2 + index * 0.15}s` }}>
-            <div className="bg-primary/20 p-4 rounded-full mb-4">
-               <item.icon className="h-8 w-8 text-primary" />
+          <div key={index} className="flex flex-col items-center text-center p-4 sm:p-6 bg-card rounded-lg shadow-md border opacity-0 scroll-anim transition-transform duration-300 hover:-translate-y-2" style={{ animationDelay: `${0.2 + index * 0.15}s` }}>
+            <div className="bg-primary/20 p-3 sm:p-4 rounded-full mb-4">
+               <item.icon className="h-7 w-7 sm:h-8 sm:w-8 text-primary" />
             </div>
             <h3 className="font-headline text-xl font-semibold mb-2">{item.title}</h3>
-            <div className="text-muted-foreground">
+            <div className="text-muted-foreground text-sm sm:text-base">
                 {item.details.map((line, i) => (
                     <p key={i}>{line}</p>
                 ))}
