@@ -32,7 +32,7 @@ export default function Donate() {
   return (
     <section id="donate" ref={sectionRef} className="bg-secondary">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid gap-12 md:grid-cols-2 md:items-start">
+        <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div className="space-y-6 opacity-0 scroll-anim">
             <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl">
               Make a Donation
@@ -111,7 +111,7 @@ export default function Donate() {
 
             <p className="text-lg font-semibold text-muted-foreground pt-4 text-center">Thank you for your support!</p>
           </div>
-          <div className="flex flex-col justify-start items-center gap-8 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
+          <div className="flex flex-col justify-center items-center gap-8 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
              <div className="bg-white p-6 rounded-lg shadow-xl border-4 border-primary/50 animate-float w-full max-w-sm">
                <h3 className="text-center font-headline text-xl font-semibold mb-4 text-foreground">Paytm QR Code</h3>
                <Image 
