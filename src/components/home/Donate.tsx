@@ -45,7 +45,7 @@ export default function Donate() {
                 <CardHeader>
                     <CardTitle className="flex items-center gap-2 font-headline text-xl">
                         <Landmark className="h-6 w-6 text-primary"/>
-                        Donate via Bank Transfer
+                        Donate via Bank Transfer (Utkarsh Bank)
                     </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3 text-muted-foreground">
@@ -70,6 +70,40 @@ export default function Donate() {
                         <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
                             <strong className="font-semibold text-foreground/80">Branch Address:</strong>
                             <span>Lanka, Varanasi, U.P. 221005</span>
+                        </li>
+                    </ul>
+                </CardContent>
+            </Card>
+
+            <Card className="border-primary/20 shadow-lg transition-all hover:shadow-primary/20">
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2 font-headline text-xl">
+                        <Landmark className="h-6 w-6 text-primary"/>
+                        Donate via Bank Transfer (SBI)
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3 text-muted-foreground">
+                    <p>If you prefer to donate directly via bank transfer, please use the following bank details:</p>
+                    <ul className="space-y-3 font-mono text-sm bg-background/50 p-4 rounded-md border">
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
+                            <strong className="font-semibold text-foreground/80">Account Name:</strong>
+                            <span>BABU DEENDAYAL SINGH CHARITABLE TRUST</span>
+                        </li>
+                         <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
+                            <strong className="font-semibold text-foreground/80">Bank Name:</strong>
+                            <span>State Bank of India</span>
+                        </li>
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
+                            <strong className="font-semibold text-foreground/80">Account Number:</strong>
+                            <span>43561539385</span>
+                        </li>
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
+                            <strong className="font-semibold text-foreground/80">IFSC Code:</strong>
+                            <span>SBIN0002606</span>
+                        </li>
+                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
+                            <strong className="font-semibold text-foreground/80">Branch Address:</strong>
+                            <span>Sahatwar Dist: Ballia, Uttar Pradesh</span>
                         </li>
                     </ul>
                 </CardContent>
