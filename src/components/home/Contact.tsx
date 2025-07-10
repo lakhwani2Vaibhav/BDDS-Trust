@@ -70,7 +70,7 @@ export default function Contact() {
             <div className="bg-primary/20 p-3 sm:p-4 rounded-full mb-4">
                <item.icon className="h-7 w-7 sm:h-8 sm:w-8 text-primary" />
             </div>
-            <h3 className="font-headline text-xl font-semibold mb-2">{item.title}</h3>
+            <h3 className="font-headline text-lg sm:text-xl font-semibold mb-2">{item.title}</h3>
             <div className="text-muted-foreground text-sm sm:text-base">
                 {item.title === 'Phone' && item.details.length > 0 ? (
                     <a href={`tel:${item.details[0]}`} className="hover:text-primary hover:underline break-all">

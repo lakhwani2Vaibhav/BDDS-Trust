@@ -41,11 +41,11 @@ export default function Hero() {
         data-ai-hint="happy children"
         priority
       />
-      <div className="relative z-10 container mx-auto text-center px-4 pt-16 sm:pt-0">
-        <h1 className="font-headline text-3xl sm:text-5xl md:text-6xl font-bold tracking-tight opacity-0 scroll-anim">
+      <div className="relative z-10 container mx-auto text-center px-4">
+        <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight opacity-0 scroll-anim">
           Serving Humanity with Compassion & Purpose
         </h1>
-        <p className="mt-4 max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-200 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
+        <p className="mt-4 max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-slate-200 opacity-0 scroll-anim" style={{ animationDelay: '0.2s' }}>
           Babu D.D. Singh Charitable Trust is dedicated to empowering lives through health, education, and livelihood initiatives for underprivileged and disabled communities across Uttar Pradesh.
         </p>
         <div className="mt-8 flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 opacity-0 scroll-anim" style={{ animationDelay: '0.4s' }}>

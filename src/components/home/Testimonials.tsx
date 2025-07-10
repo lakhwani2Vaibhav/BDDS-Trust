@@ -145,9 +145,9 @@ export default function Testimonials() {
                     }}
                     orientation="vertical"
                 >
-                    <CarouselContent className="-mt-4 h-[38rem]">
+                    <CarouselContent className="-mt-4 h-[34rem] sm:h-[22rem]">
                         {testimonials.map((testimonial, index) => (
-                        <CarouselItem key={index} className="pt-4 basis-1/2">
+                        <CarouselItem key={index} className="pt-4 basis-full sm:basis-1/2">
                             <div className="p-1 h-full">
                                 <TestimonialCard {...testimonial} />
                             </div>
