@@ -3,12 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Banknote, Landmark } from "lucide-react";
+import { Banknote, Landmark, Copy, Check } from "lucide-react";
 
 export default function Donate() {
   const sectionRef = useRef<HTMLElement>(null);
+  const [copied, setCopied] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -28,6 +29,26 @@ export default function Donate() {
 
     return () => elements.forEach((el) => observer.unobserve(el));
   }, []);
+
+  const handleCopy = (text: string, key: string) => {
+    navigator.clipboard.writeText(text);
+    setCopied(key);
+    setTimeout(() => {
+      setCopied(null);
+    }, 2000);
+  };
+
+  const CopyButton = ({ text, id }: { text: string, id: string }) => (
+    <Button
+      variant="ghost"
+      size="icon"
+      className="h-7 w-7 text-muted-foreground hover:bg-primary/10 hover:text-primary"
+      onClick={() => handleCopy(text, id)}
+      aria-label={`Copy ${id}`}
+    >
+      {copied === id ? <Check className="h-4 w-4 text-green-500" /> : <Copy className="h-4 w-4" />}
+    </Button>
+  );
 
   return (
     <section id="donate" ref={sectionRef} className="bg-secondary">
@@ -70,25 +91,37 @@ export default function Donate() {
                 <CardContent className="space-y-3 text-muted-foreground">
                     <p>If you prefer to donate directly via bank transfer, please use the following bank details:</p>
                     <ul className="space-y-3 font-mono text-sm bg-background/50 p-4 rounded-md border">
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
-                            <strong className="font-semibold text-foreground/80">Account Name:</strong>
+                        <li className="flex justify-between items-center gap-2">
+                          <div>
+                            <strong className="font-semibold text-foreground/80 block">Account Name:</strong>
                             <span>BABU DEENDAYAL SINGH CHARITABLE TRUST</span>
+                          </div>
                         </li>
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
-                            <strong className="font-semibold text-foreground/80">Bank Name:</strong>
-                            <span>Utkarsh Small Finance Bank</span>
+                        <li className="flex justify-between items-center gap-2">
+                           <div>
+                              <strong className="font-semibold text-foreground/80 block">Account Number:</strong>
+                              <span>1513020000000211</span>
+                           </div>
+                           <CopyButton text="1513020000000211" id="utkarsh-acc" />
                         </li>
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
-                            <strong className="font-semibold text-foreground/80">Account Number:</strong>
-                            <span>1513020000000211</span>
+                        <li className="flex justify-between items-center gap-2">
+                           <div>
+                              <strong className="font-semibold text-foreground/80 block">IFSC Code:</strong>
+                              <span>UTKS0001513</span>
+                           </div>
+                           <CopyButton text="UTKS0001513" id="utkarsh-ifsc" />
                         </li>
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
-                            <strong className="font-semibold text-foreground/80">IFSC Code:</strong>
-                            <span>UTKS0001513</span>
+                        <li className="flex justify-between items-center gap-2">
+                            <div>
+                                <strong className="font-semibold text-foreground/80 block">Bank Name:</strong>
+                                <span>Utkarsh Small Finance Bank</span>
+                            </div>
                         </li>
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
-                            <strong className="font-semibold text-foreground/80">Branch Address:</strong>
-                            <span>Lanka, Varanasi, U.P. 221005</span>
+                        <li className="flex justify-between items-center gap-2">
+                            <div>
+                                <strong className="font-semibold text-foreground/80 block">Branch Address:</strong>
+                                <span>Lanka, Varanasi, U.P. 221005</span>
+                            </div>
                         </li>
                     </ul>
                 </CardContent>
@@ -104,25 +137,37 @@ export default function Donate() {
                 <CardContent className="space-y-3 text-muted-foreground">
                     <p>If you prefer to donate directly via bank transfer, please use the following bank details:</p>
                     <ul className="space-y-3 font-mono text-sm bg-background/50 p-4 rounded-md border">
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
-                            <strong className="font-semibold text-foreground/80">Account Name:</strong>
+                         <li className="flex justify-between items-center gap-2">
+                          <div>
+                            <strong className="font-semibold text-foreground/80 block">Account Name:</strong>
                             <span>BABU DEENDAYAL SINGH CHARITABLE TRUST</span>
+                          </div>
                         </li>
-                         <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
-                            <strong className="font-semibold text-foreground/80">Bank Name:</strong>
-                            <span>State Bank of India</span>
+                        <li className="flex justify-between items-center gap-2">
+                           <div>
+                              <strong className="font-semibold text-foreground/80 block">Account Number:</strong>
+                              <span>43561539385</span>
+                           </div>
+                           <CopyButton text="43561539385" id="sbi-acc" />
                         </li>
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
-                            <strong className="font-semibold text-foreground/80">Account Number:</strong>
-                            <span>43561539385</span>
+                        <li className="flex justify-between items-center gap-2">
+                           <div>
+                              <strong className="font-semibold text-foreground/80 block">IFSC Code:</strong>
+                              <span>SBIN0002606</span>
+                           </div>
+                           <CopyButton text="SBIN0002606" id="sbi-ifsc" />
                         </li>
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
-                            <strong className="font-semibold text-foreground/80">IFSC Code:</strong>
-                            <span>SBIN0002606</span>
+                         <li className="flex justify-between items-center gap-2">
+                            <div>
+                                <strong className="font-semibold text-foreground/80 block">Bank Name:</strong>
+                                <span>State Bank of India</span>
+                            </div>
                         </li>
-                        <li className="grid grid-cols-1 sm:grid-cols-[150px_1fr] sm:gap-x-2 gap-y-1">
-                            <strong className="font-semibold text-foreground/80">Branch Address:</strong>
-                            <span>Sahatwar Dist: Ballia, Uttar Pradesh</span>
+                        <li className="flex justify-between items-center gap-2">
+                            <div>
+                                <strong className="font-semibold text-foreground/80 block">Branch Address:</strong>
+                                <span>Sahatwar Dist: Ballia, Uttar Pradesh</span>
+                            </div>
                         </li>
                     </ul>
                 </CardContent>
